@@ -12,16 +12,17 @@ import stepdefs.baseClass;
 import java.util.List;
 
 public class addCustomerPage extends baseClass {
-    public WebDriver driver;
+    //public WebDriver driver;
     public addCustomerPage(WebDriver driver){
-       // this.driver = driver;
-        PageFactory.initElements(driver, this);
+        //this.driver = driver;
+          PageFactory.initElements(driver, this);
     }
+    @FindBy(xpath = "//h1[contains(text(), 'Dashboard')]")WebElement dboard;
 @FindBy(xpath = "(//p[contains(text(), 'Customers')])[1]")
 WebElement customerMenu;
     @FindBy(xpath = "(//p[contains(text(), 'Customers')])[2]") WebElement customerItem;
 
-    @FindBy(xpath = "/a[@class= 'btn btn-primary']") WebElement addNewCust;
+    @FindBy(xpath = "//a[@class= 'btn btn-primary']") WebElement addNewCust;
     @FindBy(id = "Email") WebElement email;
     @FindBy(id = "Password") WebElement Password;
     @FindBy(id = "FirstName") WebElement FirstName;
@@ -39,7 +40,12 @@ WebElement customerMenu;
 @FindBy(xpath = "//select[@id='VendorId']") WebElement vendor;
 @FindBy(xpath = "//div[@class= 'alert alert-success alert-dismissable']") WebElement alertMsg;
     public String getPageTitle(){
+
         return driver.getTitle();
+    }
+    public String verifyDashboard(){
+        String db = dboard.getText();
+        return db;
     }
 
     public void clickCustomerMenu(){
@@ -74,7 +80,7 @@ WebElement customerMenu;
        List<WebElement> allroles = driver.findElements(By.xpath(String.valueOf(cRoles)));
         for(WebElement e : allroles){
         if(e.getText().equalsIgnoreCase(role)){
-            e.click();
+            clickwithJavascript(e);
             break;
         }
         }

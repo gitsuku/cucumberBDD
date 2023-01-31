@@ -6,12 +6,16 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.addCustomerPage;
 
 public class addCustomer extends baseClass{
-    WebDriver driver = null;
-    addCustomerPage add = new addCustomerPage(driver);
+    //WebDriver driver;
+
+     //addC = new addCustomerPage(driver);
     @Then("user can view dashboard")
-    public void user_can_view_dashboard() {
-    addC = new addCustomerPage(driver);
-        Assert.assertEquals("Dashboard / nopCommerce administration", addC.getPageTitle());
+    public void user_can_view_dashboard() throws InterruptedException {
+        System.out.println("user dashboard page");
+       addC = new addCustomerPage(driver);
+    Thread.sleep(4000);
+    String title = addC.verifyDashboard();
+        Assert.assertEquals("Dashboard", title );
     }
 
     @When("user clicks on customer menu")

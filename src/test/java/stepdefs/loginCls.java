@@ -14,15 +14,12 @@ public class loginCls  extends baseClass{
 
     @Given("I launch chrome browser")
     public void i_launch_chrome_browser() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    launchBrowser();
     }
     @When("open application url")
     public void open_application_url() {
-    driver.get("https://admin-demo.nopcommerce.com/login");
-    driver.manage().window().maximize();
-    driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-    driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+    openUrl("https://admin-demo.nopcommerce.com/login");
+
     }
     @And("^enter(.*)and(.*)$")
     public void enter_user_password(String username, String password){
@@ -42,6 +39,6 @@ public class loginCls  extends baseClass{
     @And("close browser")
     public void close_browser(){
 
-        driver.close();
+        closeBrowser();
 }
 }
