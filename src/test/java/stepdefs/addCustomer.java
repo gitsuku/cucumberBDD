@@ -40,8 +40,8 @@ addC.clickaddNewCust();
     }
 
     @When("user enter customer info")
-    public void user_enter_customer_info() {
-    String email = randomString()+"gmail.com";
+    public void user_enter_customer_info() throws InterruptedException {
+    String email = randomString()+"@gmail.com";
     addC.setEmail(email);
     addC.setFirstName("sukumar");
     addC.setSecondName("suk");

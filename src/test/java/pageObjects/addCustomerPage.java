@@ -36,6 +36,8 @@ WebElement customerMenu;
     @FindBy(id = "AdminComment") WebElement AdminComment;
     @FindBy(xpath = "//button[@name='save']") WebElement save;
     @FindBy(xpath = "(//div[@class='k-widget k-multiselect k-multiselect-clearable'])[2]") WebElement roleBox;
+    @FindBy(xpath = "(//li/span[@unselectable = 'on'])[1]") WebElement unselectRole;
+
 @FindBy(xpath = "//ul[@id='SelectedCustomerRoleIds_listbox']/li") WebElement cRoles;
 @FindBy(xpath = "//select[@id='VendorId']") WebElement vendor;
 @FindBy(xpath = "//div[@class= 'alert alert-success alert-dismissable']") WebElement alertMsg;
@@ -75,23 +77,24 @@ WebElement customerMenu;
         DateOfBirth.sendKeys(birthDate);
     }
 
-    public void setCustomerRole(String role){
-        roleBox.click();
-       List<WebElement> allroles = driver.findElements(By.xpath(String.valueOf(cRoles)));
-        for(WebElement e : allroles){
-        if(e.getText().equalsIgnoreCase(role)){
-            clickwithJavascript(e);
-            break;
+    public void setCustomerRole(String role) throws InterruptedException {
+        String actualRoleText = unselectRole.getText();
+        if(! (actualRoleText.equalsIgnoreCase(role))){
+
+            roleBox.click();
+            Thread.sleep(2000);
+            driver.findElement(By.xpath("//ul/li[contains(text(), "+role+")]")).click();
         }
-        }
+
     }
     public void setManageVendor(String vendorName){
         Select select = new Select(vendor);
-        select.deselectAll();
+        //select.deselectAll();
         select.selectByVisibleText(vendorName);
     }
     public void saveCustomer(){
         save.click();
+
     }
     public void verifyAlertMessage() throws InterruptedException {
         Thread.sleep(5000);
