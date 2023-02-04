@@ -27,6 +27,11 @@ public class loginCls  extends baseClass{
     login.setUser_password(username,password);
 
     }
+    @When("new enter username as {string} and password as {string}")
+    public void new_enter_username_as_and_password_as(String u, String p) {
+        login = new loginPage( driver);
+    login.setUser_password(u, p);
+    }
     @And("click on submit")
     public void clicklogin() throws InterruptedException {
         login.clicklogin();
