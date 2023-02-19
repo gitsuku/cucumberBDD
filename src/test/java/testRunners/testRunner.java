@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "C://Users//JAICHANDRAN//IdeaProjects//cucumberBDD//Features//searchCustomer.feature",
+        features = "C://Users//JAICHANDRAN//IdeaProjects//cucumberBDD//Features//Orders.feature",
         glue = "stepdefs", monochrome = true, dryRun = false, plugin = {"pretty","html:target/HtmlReports"}
 )
 public class testRunner {

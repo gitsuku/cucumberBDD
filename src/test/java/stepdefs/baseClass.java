@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.addCustomerPage;
 import pageObjects.loginPage;
+import pageObjects.salespage;
 import pageObjects.searchCustomerPage;
 
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ public class baseClass {
     public loginPage login;
     public  addCustomerPage addC;
     public searchCustomerPage searchPage;
-
+    public salespage salesP;
      public static String randomString(){
          String generateString  = RandomStringUtils.randomAlphabetic(5);
          return generateString;
