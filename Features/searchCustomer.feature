@@ -13,7 +13,7 @@ Feature: Search customer
 
     When user clicks on customer menu
     And clicks on customer menu item
-   And enter email "y9vsq6al@gmail.com"
+   And enter email "WDCIbm@gmail.com"
     When clicks on search button
     Then user should found email
     And close browser
